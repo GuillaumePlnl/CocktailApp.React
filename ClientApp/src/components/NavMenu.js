@@ -3,6 +3,8 @@ import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLi
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 
+import i18n from "i18next";
+
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
 
@@ -38,6 +40,8 @@ export class NavMenu extends Component {
                                 </NavItem>
                             </ul>
                         </Collapse>
+                        <button onClick={() => i18n.changeLanguage('fr')}><img src="../img/frFlag.png" alt="" />fr</button>
+                        <button onClick={() => i18n.changeLanguage('en')}><img src="../img/gbFlag.ico" alt="" />en</button>
                     </Container>
                 </Navbar>
             </header>

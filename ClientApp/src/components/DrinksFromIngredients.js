@@ -4,6 +4,8 @@ import './DrinksFromIngredients.css'
 
 export class DrinksFromIngredients extends Component {
   constructor(props) {
+    document.title = DrinksFromIngredients.name
+
     super(props)
     this.state = {
       detailledDrinkIsShown: false,
@@ -16,7 +18,7 @@ export class DrinksFromIngredients extends Component {
   handleClick = (event) => {
     // On stocke la donnée de requette dans Cocktail request
     console.log('selected cocktail : ' + event.currentTarget.id)
-    this.state.selectedCocktail = event.currentTarget.id
+    this.setState({selectedCocktail: event.currentTarget.id})
 
     // on appelle l'url de l'API pour envoyer le détail du cocktail
     const url2 =
@@ -33,6 +35,8 @@ export class DrinksFromIngredients extends Component {
 
   setShown = (value) => {
     this.setState({ detailledDrinkIsShown: value })
+    console.log("Detailled cocktail display : " + this.state.detailledDrinkIsShown)
+
   }
   
   render() {
@@ -54,12 +58,12 @@ export class DrinksFromIngredients extends Component {
               <div
                 onClick={this.handleClick}
                 id={e.pkId}
-                class="card" /*style={{width: 16 + 'rem'}}*/
+                className="card" /*style={{width: 16 + 'rem'}}*/
               >
                 <img src={e.urlPicture} class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">{e.drinkName}</h5>
-                  <p class="card-text">{e.instruction}...</p>
+                <div className="card-body">
+                  <h5 className="card-title">{e.drinkName}</h5>
+                  <p className="card-text">{e.instruction}...</p>
                   {/* <a  id={e.pkId} class="btn btn-primary">{e.idSource}</a> */}
                 </div>
               </div>

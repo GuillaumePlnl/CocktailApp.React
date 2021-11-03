@@ -1,5 +1,5 @@
 /*import * as React from 'react';*/
-import React, { Component } from 'react'
+import React, {} from 'react'
 
 export function FetchCocktailDetail(props) {
   let contents = (
@@ -7,30 +7,30 @@ export function FetchCocktailDetail(props) {
       <div>
         <table className="table table-striped" aria-labelledby="tableLabel">
           <tbody>
-            {props.cocktail.map((c) => (
+            {console.log(props.cocktail)}
+            
               <React.Fragment>
-                <tr key={c.pkId}>
-                  <td>Name : {c.drinkName}</td>
+                <tr key={props.cocktail.pkId}>
+                  <td>Name : {props.cocktail.drinkName}</td>
                   <td>
-                    <img src={c.urlPicture} style={{ width: 5 + 'rem' }} />
+                    <img alt="" src={props.cocktail.urlPicture} style={{ width: 5 + 'rem' }} />
                   </td>
-                  <td>Instructions : {c.instruction}</td>
-                  <td>Glass name : {c.glassName}</td>
-                  <td>Alcoholic : {c.alcoholicName}</td>
-                  <td>Cocktail category : {c.categoryName}</td>
+                  <td>Instructions : {props.cocktail.instruction}</td>
+                  <td>Glass name : {props.cocktail.glassName}</td>
+                  <td>Alcoholic : {props.cocktail.alcoholicName}</td>
+                  <td>Cocktail category : {props.cocktail.categoryName}</td>
                 </tr>
               </React.Fragment>
-            ))}
           </tbody>
         </table>
         <table className="table table-striped" aria-labelledby="tableLabel">
           <tbody>
-            {props.cocktail.map((c) => (
+            
               <React.Fragment>
-                Ingredients : {c.ingredientsList} <br />
-                Measures : {c.measureList} <br />
+                Ingredients : {props.cocktail.ingredientsList} <br />
+                Measures : {props.cocktail.measureList} <br />
               </React.Fragment>
-            ))}
+            
           </tbody>
         </table>
         <button

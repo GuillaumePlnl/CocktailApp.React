@@ -1,0 +1,16 @@
+{
+    "Title": {
+        "title1": "Select your ingredient !"
+    },
+    "SelectYourIngredients": {
+        "title1": "Choose your First ingredient",
+        "title2": "Choose your Second ingredient",
+        "title3": "Choose your third ingredient"
+    },
+    "Validate": {
+        "v1": "Validate"
+    },
+    "Ingredients": {
+        "no": "no ingredient"
+    }
+}

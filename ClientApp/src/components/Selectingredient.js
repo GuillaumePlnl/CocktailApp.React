@@ -1,11 +1,16 @@
 import React from 'react';
+import {useTranslation} from "react-i18next";
+
+
 
 export function SelectIngredient ({id, handleChange, value, allIngredients, title}) {
+    const {t} = useTranslation('common');
+
     return (
-            <div>
+            <div className="">
             <label > {title} </label>
-            <select id={id} onChange={handleChange} value={value} class="custom-select" name="ingredient">
-                <option key="" value="">- no ingredient -</option>
+            <select id={id} onChange={handleChange} value={value} className="custom-select" name="ingredient">
+                <option key="" value="">- {t('Ingredients.no')} -</option>
                 {allIngredients.map(x => (
                         <option key={x.pkId} value={x.pkId}>{x.ingredientName}</option>
                     ))} 

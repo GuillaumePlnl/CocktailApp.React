@@ -14,6 +14,7 @@ export class EveryCocktail extends Component {
   }
 
   async componentDidMount() {
+    document.title = EveryCocktail.name
     const response = await fetch('/cocktail/Home/GetAllCocktails')
     let data = await response.json()
     this.setState({ cocktails: data, loading: false })
@@ -22,7 +23,7 @@ export class EveryCocktail extends Component {
   handleClick = (event) => {
     // On stocke la donnée de requette dans Cocktail request
     console.log('selected cocktail : ' + event.currentTarget.id)
-    this.state.selectedCocktail = event.currentTarget.id
+    this.setState({selectedCocktail: event.currentTarget.id})
     // on appelle l'url de l'API pour envoyer le détail du cocktail
     let url2 = '/cocktail/Home/getDetailledDrink/' + this.state.selectedCocktail
     console.log('getDetailledDrink, url sent : ' + url2)
