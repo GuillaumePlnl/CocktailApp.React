@@ -90,7 +90,6 @@ export class SelectIngredients extends Component {
 
         return (
             <div>
-                
                 <h1 id="tableLabel">{this.props.t('Title.title1')}</h1>
                 <p></p>
                 {contents}

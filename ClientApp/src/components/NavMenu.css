@@ -7,10 +7,17 @@
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
+}
+
+.ico1{
+height: 25px;
+width: 25px;
+padding: 0.3rem;
 }
 
 header{

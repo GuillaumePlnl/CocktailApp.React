@@ -5,8 +5,14 @@
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
-
+@font-face {
+  font-family: 'Bromine';
+  src: local('BromineCocktail.otf'), url(./fonts/BromineCocktail.otf) ;
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
 a {
+  
   color: #0366d6;
 }
 

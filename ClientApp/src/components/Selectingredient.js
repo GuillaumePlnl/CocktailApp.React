@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 
 
 
-export function SelectIngredient ({id, handleChange, value, allIngredients, title}) {
+export function SelectIngredient ({id, title , handleChange, allIngredients, value}) {
     const {t} = useTranslation('common');
 
     return (

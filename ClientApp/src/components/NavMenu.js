@@ -2,18 +2,31 @@ import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
+// import { ThemeContext } from '../ThemeContext/ThemeContext';
+
+import {ThemeContext, themes} from '../ThemeContext/theme-context';
+import ThemedButton from '../ThemeContext/themed-button';
 
 import i18n from "i18next";
 
+// // An intermediate component that uses the ThemedButton
+// function Toolbar(props) {
+//     return (
+//       <ThemedButton onClick={props.changeTheme}>
+//         Change Theme
+//       </ThemedButton>
+//     );
+//   }
+
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
-
     constructor(props) {
         super(props);
-
         this.toggleNavbar = this.toggleNavbar.bind(this);
+
         this.state = {
-            collapsed: true
+            collapsed: true,
+            theme: themes.light,
         };
     }
 
@@ -26,9 +39,9 @@ export class NavMenu extends Component {
     render() {
         return (
             <header>
-                <Navbar className="navbar navbar-expand-sm navbar-light bg-dark" light>
+                <Navbar className={this.context ? "navbar navbar-expand-sm navbar-light bg-dark" : "navbar navbar-expand-sm navbar-dark bg-light"} light>
                     <Container>
-                        <NavbarBrand className="text-light" tag={Link} to="/">Cocktails</NavbarBrand>
+                        <NavbarBrand className="text-light" tag={Link} to="/"><img src={require("../images/cocktail.jpg")} className="ico1" alt="" />Cocktails</NavbarBrand>
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
                         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
                             <ul className="navbar-nav flex-grow">
@@ -40,11 +53,15 @@ export class NavMenu extends Component {
                                 </NavItem>
                             </ul>
                         </Collapse>
-                        <button onClick={() => i18n.changeLanguage('fr')}><img src="../img/frFlag.png" alt="" />fr</button>
-                        <button onClick={() => i18n.changeLanguage('en')}><img src="../img/gbFlag.ico" alt="" />en</button>
+                            <div onClick = {this.props.changeTheme}>
+                            <ThemedButton /> 
+                            </div>
+                        <button type="button" class="btn btn-dark" onClick={() => i18n.changeLanguage('fr')}><img className="ico1" src={require("../images/frFlag.png")} alt="" />fr</button>
+                        <button type="button" class="btn btn-dark" onClick={() => i18n.changeLanguage('en')}><img className="ico1" src={require("../images/gbFlag.ico")} alt="" />en</button>
                     </Container>
                 </Navbar>
             </header>
         );
     }
 }
+NavMenu.contextType = ThemeContext;
