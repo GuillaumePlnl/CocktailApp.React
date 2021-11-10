@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { SelectIngredient } from './Selectingredient';
 import { DrinksFromIngredients } from './DrinksFromIngredients';
 import {useTranslation} from "react-i18next";
+import { Login } from './Login/Login';
 
 export function HeaderSelectIngredients()
 {
@@ -88,17 +89,30 @@ export class SelectIngredients extends Component {
         );
 
         // const HighOrderComponentTranslated = withTranslation('common')(SelectIngredients)
-
-        return (
+        if(localStorage.getItem('AuthenticationToken')) {
+            return (
+                <div>
+                    <h1 id="tableLable">{this.props.t('Title.title1')}</h1>
+                    <p></p>
+                    {contents}
+                    <DrinksFromIngredients      cocktailsParam={this.state.cocktails} 
+                                                AnswerIsShown={this.state.AnswerIsShown} />
+                </div> 
+            );
+        }
+        else {
+            return (
             <div>
                 <h1 id="tableLable">{this.props.t('Title.title1')}</h1>
                 <p></p>
-                {contents}
+                <Login/>
                 <DrinksFromIngredients      cocktailsParam={this.state.cocktails} 
                                             AnswerIsShown={this.state.AnswerIsShown} />
-            </div>
-            
-        );
+            </div> )    
+
+        }
+    
+
     }
 
 }

@@ -41,6 +41,8 @@ export class Login extends Component {
         if(! localStorage.getItem('AuthenticationToken')) 
           {
             localStorage.setItem("AuthenticationToken", this.state.answerJson.token)
+            this.setState(this.state.AuthIsOk = 'Sucessfully logged in')
+            setTimeout('', 3000);
           }
       this.setState({AuthIsOk : this.state.answerJson.message})
       event.preventDefault()
