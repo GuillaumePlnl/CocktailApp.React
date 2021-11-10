@@ -20,18 +20,18 @@ import React from 'react';
 
 export const themes = {
     light: {
-      foreground: '#000000',
+      foreground: '#25221c',
       background: '#eeeeee',
     },
     dark: {
-      foreground: '#ffffff',
-      background: '#222222',
+      foreground: '#3a342c',
+      background: '#d3d3d3',
     },
   };
-
+//#3a342c
   const defaultTheme = {
-    themeName: null,
-    theme: null,
+    themeName: themes.light,
+    theme: themes.light,
     toggleTheme: null,
   }
 

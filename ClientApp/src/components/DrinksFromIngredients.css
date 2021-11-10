@@ -3,7 +3,6 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-
 .card {
     margin: 0.2em;
     width: 16rem;
@@ -11,10 +10,9 @@
     border-color: gray;
     background-color: rgba(250, 220, 212, 0.35);
     box-shadow: 0.03em -0.03em 0.1em grey;
-
 }
 .card:hover{
-    background-color: rgba(236, 149, 125, 0.35);
+    background-color: rgba(116, 85, 78, 0.35);
 }
 .card-body{
     text-align: center;

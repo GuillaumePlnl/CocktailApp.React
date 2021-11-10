@@ -11,38 +11,33 @@
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
-a {
-  
+body{
+  transition: background-color 1s ease;
+}
+a { 
   color: #0366d6;
 }
-
 code {
   color: #E01A76;
 }
-
 h1 {
   text-align: center;
-  /* font-family: 'Cocktails', serif; */
-
-  /* background: linear-gradient(
-    to right, 
-    hsl(135 80% 50%), 
-    hsl(204 100% 59%)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center; */
+  font-family: 'Bromine';
 }
-
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #49371f;
+  border: none;
+  font-family: 'Bromine';
 }
-
+.btn-success {
+  color: #fff;
+  background-color: #49371f;
+  border: none;
+  font-family: 'Bromine';
+}
 .spinner-border{
   height: 5em;
   width: 5em;
   margin: 2em;
-  
 }

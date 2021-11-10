@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import './NavMenu.css';
 // import { ThemeContext } from '../ThemeContext/ThemeContext';
 
 import {ThemeContext, themes} from '../ThemeContext/theme-context';
@@ -39,9 +38,9 @@ export class NavMenu extends Component {
     render() {
         return (
             <header>
-                <Navbar className={this.context ? "navbar navbar-expand-sm navbar-light bg-dark" : "navbar navbar-expand-sm navbar-dark bg-light"} light>
-                    <Container>
-                        <NavbarBrand className="text-light" tag={Link} to="/"><img src={require("../images/cocktail.jpg")} className="ico1" alt="" />Cocktails</NavbarBrand>
+                <Navbar className={this.context.themeName === 'light' ? "navbar navbar-expand-sm navbar-light bg-dark" : "navbar navbar-expand-sm navbar-dark bg-light"} light>
+                    <Container style={{height:"3em"}}>
+                        <NavbarBrand className="text-light" tag={Link} to="/"><h1 className="beauty">Cocktails </h1></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
                         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
                             <ul className="navbar-nav flex-grow">

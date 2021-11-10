@@ -7,30 +7,27 @@ export function FetchCocktailDetail(props) {
       <div>
         <table className="table table-striped" aria-labelledby="tableLabel">
           <tbody>
-            {console.log(props.cocktail)}
-            
-              <React.Fragment>
+            {console.log(props.cocktail)}    
                 <tr key={props.cocktail.pkId}>
-                  <td>Name : {props.cocktail.drinkName}</td>
+                  <td>{props.cocktail.drinkName}</td>
                   <td>
                     <img alt="" src={props.cocktail.urlPicture} style={{ width: 5 + 'rem' }} />
                   </td>
-                  <td>Instructions : {props.cocktail.instruction}</td>
-                  <td>Glass name : {props.cocktail.glassName}</td>
+                  <td><b> Instructions :</b> {props.cocktail.instruction}</td>
+                  <td>{props.cocktail.glassName}</td>
                   <td>Alcoholic : {props.cocktail.alcoholicName}</td>
                   <td>Cocktail category : {props.cocktail.categoryName}</td>
                 </tr>
-              </React.Fragment>
           </tbody>
         </table>
         <table className="table table-striped" aria-labelledby="tableLabel">
-          <tbody>
-            
-              <React.Fragment>
-                Ingredients : {props.cocktail.ingredientsList} <br />
-                Measures : {props.cocktail.measureList} <br />
-              </React.Fragment>
-            
+          <tbody>          
+                {props.cocktail.ingredientsQuantities.map( x => (
+                  <div>
+                  <b> Ingredient  :</b> {x.ingredientName} <br />
+                  <b> Quantity :</b> {(x.quantity != '') ? x.quantity : (<span className = "beauty">As pleases you</span>) } <br />
+                  </div>
+                ))}
           </tbody>
         </table>
         <button

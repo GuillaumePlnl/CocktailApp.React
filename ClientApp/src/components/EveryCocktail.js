@@ -4,6 +4,7 @@ import { FetchCocktailDetail } from './FetchCocktailDetail'
 export class EveryCocktail extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       loading: true,
       detailledDrinkIsShown: false,
@@ -14,10 +15,17 @@ export class EveryCocktail extends Component {
   }
 
   async componentDidMount() {
-    document.title = EveryCocktail.name
-    const response = await fetch('/cocktail/Home/GetAllCocktails')
-    let data = await response.json()
-    this.setState({ cocktails: data, loading: false })
+
+    //  if(user == null){
+      
+    // }
+    // else{
+      document.title = EveryCocktail.name
+      const response = await fetch('/cocktail/Home/GetAllCocktails')
+      let data = await response.json()
+      this.setState({ cocktails: data, loading: false })
+    //}
+
   }
 
   handleClick = (event) => {

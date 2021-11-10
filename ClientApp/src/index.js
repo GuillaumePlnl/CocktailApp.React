@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -11,6 +11,10 @@ import i18next from "i18next";
 import common_fr from "./translations/fr/common.json";
 import common_en from "./translations/en/common.json";
 // end i18n
+
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css'
+import './components/NavMenu.css';
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');

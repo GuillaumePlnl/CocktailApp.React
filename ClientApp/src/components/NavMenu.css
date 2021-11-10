@@ -19,9 +19,8 @@ height: 25px;
 width: 25px;
 padding: 0.3rem;
 }
-
-header{
-  margin-bottom: 1rem;
+div .container{
+  padding-top: 0.5rem;
 }
 
 .box-shadow {

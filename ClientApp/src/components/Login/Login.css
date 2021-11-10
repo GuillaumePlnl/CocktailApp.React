@@ -1,36 +1,39 @@
 
 .login-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: rgb(58, 52, 44);
     padding: 15px;
-    /* margin: 0; */
     position: absolute;
-    top: 40%;
+    top: 17%;
     left: 20%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-
-    font-family: 'Bromine', serif;
-
+   font-family: 'Bromine', serif;
 }
 
-@media (min-width: 800px) {body{
+ @media (min-width: 800px) {.loginBk{
     background-image: url("../../images/wp.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-color: black;
 }}
-@media (max-width: 800px) {body{
+@media (max-width: 800px) {.loginBk{
     background-image: url("../../images/wp.jpg");
     background-repeat: no-repeat;
     background-size: 800px 540px;
     background-color: black;
-}}
+
+}} 
+
 label p {
     margin-top: 1em;
     color: whitesmoke;
+}
+ #beauty, .beauty {
+    font-family: 'Cocktails', serif;
+    background: linear-gradient(
+        to right, 
+        hsl(200 40% 30%), 
+        hsl(204 40% 59%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 }
 .login-wrapper h1 {
     font-family: 'Cocktails', serif;
@@ -57,11 +60,9 @@ label p {
     background-color: rgb(37, 34, 28);
     border: none;
     color: grey;
-
 }
 .login-wrapper p {
     color: lightgrey;
-
 }
 .login-wrapper button:hover {
     background-color: rgb(73, 67, 56);

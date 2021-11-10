@@ -52,8 +52,8 @@ export class SelectIngredients extends Component {
         document.title = SelectIngredients.name
         const response = await fetch('/cocktail/Home/allIngredients');
         let data = await response.json();
-        var sortedData = data.sort( );                          //Marche pas
-        this.setState({ allIngredients: sortedData, loading: false });    
+        // var sortedData = data.sort( );                          //Marche pas
+        this.setState({ allIngredients: data, loading: false });    
     }
 
     render() {
@@ -63,8 +63,9 @@ export class SelectIngredients extends Component {
             </div>
 
         ) : (
+
             // this.renderIngredientsSelectTable(this.state.allIngredients);
-            <form id="ingredientForm" onSubmit={this.handleSubmit}>
+        <form id="ingredientForm" onSubmit={this.handleSubmit}>
             <SelectIngredient id="0"    title={this.props.t('SelectYourIngredients.title1')} 
                                         handleChange={this.selectIngredient} 
                                         value={this.state.dict[0]} 
@@ -90,7 +91,7 @@ export class SelectIngredients extends Component {
 
         return (
             <div>
-                <h1 id="tableLabel">{this.props.t('Title.title1')}</h1>
+                <h1 id="tableLable">{this.props.t('Title.title1')}</h1>
                 <p></p>
                 {contents}
                 <DrinksFromIngredients      cocktailsParam={this.state.cocktails} 
