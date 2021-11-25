@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
@@ -22,17 +22,11 @@ import {Login} from './components/Login/Login';
 // }
 
 export function App() {
+        // const [token, setToken] = useState();
 
-    const [token, setToken] = useState();
-    
-    // if(!token) {
-    //     return <Login setToken={setToken} />
-    //     }
-
-        // The ThemedButton button inside the ThemeProvider
-        // uses the theme from state while the one outside uses
-        // the default dark theme
-   
+        // if(!token) {
+        //         return <Login setToken={setToken} />
+        //       }
         return (
                 <Layout className="App">
                     <Route exact path='/' component={Home} />

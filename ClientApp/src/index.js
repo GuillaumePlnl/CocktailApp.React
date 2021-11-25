@@ -15,6 +15,7 @@ import common_en from "./translations/en/common.json";
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 import './components/NavMenu.css';
+//import './BootstrapCustom.sass';
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');

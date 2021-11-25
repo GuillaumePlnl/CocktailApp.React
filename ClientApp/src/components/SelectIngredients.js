@@ -12,6 +12,10 @@ export function HeaderSelectIngredients()
     )
 }
 
+// ComponentWillMount() {
+//     if(localStorage.getItem('AuthenticationToken'))
+// }
+
 export class SelectIngredients extends Component {
 
     constructor(props) {
@@ -36,22 +40,28 @@ export class SelectIngredients extends Component {
         this.setState({ dict: newDict });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         //TODO : supprimer les chaines vides du tableau dict
+        let tokenString = (localStorage.getItem('AuthenticationToken'));
+        let HeaderOptions = {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json',
+                      'Authorization' : tokenString },
+          // body: JSON.stringify({ username: this.state.username, password: this.state.password })
+        };
 
-        let url = '/cocktail/Home/GetDrinkByIngredientsId/' + this.state.dict.join('&Ids=');
+        let url = '/cocktail/GetDrinkByIngredientsId/' + this.state.dict.join('&Ids=');
         console.log("envoi de l'url" + url);
-        fetch(url)
+        await fetch(url, HeaderOptions)
             .then((res) => res.json())
             .then((result) => {
-                this.setState({cocktails: result, AnswerIsShown: true});
-            })
-        event.preventDefault();
+                this.setState({cocktails: result, AnswerIsShown: true})})
+            .then(event.preventDefault());
     }
 
     async componentDidMount() {
         document.title = SelectIngredients.name
-        const response = await fetch('/cocktail/Home/allIngredients');
+        const response = await fetch('/cocktail/allIngredients');
         let data = await response.json();
         // var sortedData = data.sort( );                          //Marche pas
         this.setState({ allIngredients: data, loading: false });    
@@ -111,8 +121,5 @@ export class SelectIngredients extends Component {
             </div> )    
 
         }
-    
-
     }
-
 }

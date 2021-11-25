@@ -1,5 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Container } from 'react'
 import { FetchCocktailDetail } from './FetchCocktailDetail'
+import { ThemeContext } from '../ThemeContext/theme-context'
+import { NavMenu } from './NavMenu'
+import { Login } from './Login/Login'
 
 export class EveryCocktail extends Component {
   constructor(props) {
@@ -14,18 +17,23 @@ export class EveryCocktail extends Component {
     }
   }
 
+  // AUTH CHECK
+  componentWillMount() {
+    this.context.checkAuthToken();
+  }
   async componentDidMount() {
 
     //  if(user == null){
       
     // }
     // else{
-      document.title = EveryCocktail.name
-      const response = await fetch('/cocktail/Home/GetAllCocktails')
+      let HeaderOptions = this.GenerateAuthorizedHeader()
+
+      // let actualToken = localStorage.getItem('AuthenticationToken');
+      const response = await fetch('/cocktail/GetAllCocktails', HeaderOptions)
       let data = await response.json()
       this.setState({ cocktails: data, loading: false })
     //}
-
   }
 
   handleClick = (event) => {
@@ -33,9 +41,9 @@ export class EveryCocktail extends Component {
     console.log('selected cocktail : ' + event.currentTarget.id)
     this.setState({selectedCocktail: event.currentTarget.id})
     // on appelle l'url de l'API pour envoyer le détail du cocktail
-    let url2 = '/cocktail/Home/getDetailledDrink/' + this.state.selectedCocktail
+    let url2 = '/cocktail/getDetailledDrink/' + this.state.selectedCocktail
     console.log('getDetailledDrink, url sent : ' + url2)
-    fetch(url2)
+    fetch(url2, this.GenerateAuthorizedHeader())
       .then((res) => res.json())
       .then((result) => {
         this.setState({ detailCocktail: result, detailledDrinkIsShown: true })
@@ -46,7 +54,7 @@ export class EveryCocktail extends Component {
 
   handleSearchCocktailChange = (event) => {
     let searchString = event.target.value;
-    let url = '/cocktail/Home/GetDrinkBySearchName/' + searchString;
+    let url = '/cocktail/GetDrinkBySearchName/' + searchString;
     console.log('Appel de GetDrinkBySearchName : ' + url);
 
     fetch(url)
@@ -58,10 +66,22 @@ export class EveryCocktail extends Component {
     event.preventDefault()
   }
 
+  GenerateAuthorizedHeader() {
+    let tokenString = (localStorage.getItem('AuthenticationToken'))
+    let HeaderOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': tokenString
+      },
+      // body: JSON.stringify({ username: this.state.username, password: this.state.password })
+    }
+    return HeaderOptions
+  }
+
   setShown = (value) => {
     this.setState({ detailledDrinkIsShown: value })
   }
-
   refreshPage = () => {
     window.location.reload(false);
   }
@@ -74,6 +94,20 @@ export class EveryCocktail extends Component {
         </div>
       )
     }
+
+    if(!this.context.authToken) {
+      return(
+        <ThemeContext.Provider value={this.state.context}>
+            <NavMenu />
+            <div>
+              <Container>
+                <Login/>  
+              </Container>
+            </div>
+        </ThemeContext.Provider>
+
+      )};
+    // console.log('Layout : state avant : ' + this.state.context.theme.background);
 
     let contents = this.state.detailledDrinkIsShown ? (
       <React.Fragment>
@@ -109,7 +143,7 @@ export class EveryCocktail extends Component {
         </div>
       </React.Fragment>
     )
-
     return <div>{contents}</div>
   }
 }
+EveryCocktail.contextType = ThemeContext

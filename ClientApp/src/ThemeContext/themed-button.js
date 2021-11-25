@@ -8,7 +8,7 @@ class ThemedButton extends Component {
     this.state = {  
       // backgroundColor: this.context.theme.background 
     };
-}
+  }
 
   componentDidMount(){
     // this.setState(backgroundColor = { backgroundColor: this.context.theme.background });
@@ -26,7 +26,7 @@ class ThemedButton extends Component {
     return (
               <button
                   onClick= {() => this.context.toggleTheme()}
-                  type="button" class="btn btn-dark"
+                  type="button" className="btn btn-dark"
                   style={{backgroundColor: this.context.theme.background, borderRadius: "50px", height: "2.7em", width: "2.7em"}}
                   >
                     

@@ -2,12 +2,19 @@
 import React, {} from 'react'
 
 export function FetchCocktailDetail(props) {
+
+  if(! props.cocktail.pkId) {
+    return (
+      <div><b>ERROR, no cocktail found in component !</b></div>
+    );
+  }
+
   let contents = (
     <React.Fragment>
       <div>
         <table className="table table-striped" aria-labelledby="tableLabel">
           <tbody>
-            {console.log(props.cocktail)}    
+            {props.cocktail.pkId ? console.log(props.cocktail) : console.log("Error : No cocktail found in component")}    
                 <tr key={props.cocktail.pkId}>
                   <td>{props.cocktail.drinkName}</td>
                   <td>
@@ -25,7 +32,7 @@ export function FetchCocktailDetail(props) {
                 {props.cocktail.ingredientsQuantities.map( x => (
                   <div>
                   <b> Ingredient  :</b> {x.ingredientName} <br />
-                  <b> Quantity :</b> {(x.quantity != '') ? x.quantity : (<span className = "beauty">As pleases you</span>) } <br />
+                  <b> Quantity :</b> {(x.quantity !== '') ? x.quantity : (<span className = "beauty">As pleases you</span>) } <br />
                   </div>
                 ))}
           </tbody>

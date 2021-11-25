@@ -22,7 +22,7 @@ export class DrinksFromIngredients extends Component {
 
     // on appelle l'url de l'API pour envoyer le détail du cocktail
     const url2 =
-      '/cocktail/Home/getDetailledDrink/' + this.state.selectedCocktail
+      '/cocktail/getDetailledDrink/' + this.state.selectedCocktail
     console.log('getDetailledDrink, url sent : ' + url2)
     fetch(url2)
       .then((res) => res.json())
@@ -72,7 +72,7 @@ export class DrinksFromIngredients extends Component {
         </React.Fragment>
       )
     ) : (
-      <p> (Ctr DrinksFromIngredients.) </p>
+      <h4 className="beauty"> Choose your ingredients to reveal cocktails </h4>
     )
   }
 }
